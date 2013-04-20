@@ -1,16 +1,8 @@
-blabla = node[:ec2][:instance_id]
-tralala = "a"
-if blabla.nil?
-	tralala = "a"
-else
-	tralala = blabla
-end
-tralala = blabla.empty? "aa":blabla
 template "#{node["elb"]["scripts_home"]}/elb_register.sh" do
   source "elb_register.erb"
   mode 0644
   variables(
-    :ec2_instance_node_name => "#{tralala}",
+    :ec2_instance_node_name => "#{node[:ec2][:instance_id] || ''}",
     :elbs => node["elb"]["names"]
   )
 end
