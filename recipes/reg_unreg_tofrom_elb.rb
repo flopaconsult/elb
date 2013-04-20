@@ -1,4 +1,10 @@
 blabla = node[:ec2][:instance_id]
+tralala = "a"
+if blabla.nil?
+	tralala = "a"
+else
+	tralala = blabla
+end
 tralala = blabla.empty? "aa":blabla
 template "#{node["elb"]["scripts_home"]}/elb_register.sh" do
   source "elb_register.erb"
